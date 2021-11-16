@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const Message = (props) => {
-  return (
-    <p class="props-txt">{props.txt}</p>
-  );
-};
+const App = () => {
+  const [state, setState] = useState('');
 
-const App = (props) => {
+  const [messageList, setMessageList] = useState([])
+
+  const f = (e) => {
+    setState(e.target.value);
+  }
+
+  const send = () => {
+    messageList.push({ text: state, author: '' })
+  }
+
   return (
-    <Message {...props} />
+    <div class='wrap'>
+      <div class='message'>{messageList.map(message => <p>{message.text}</p>)}</div>
+      <input class='input' type="text" value={state} onChange={f} placeholder='Сообщение...' />
+      <button class='submit' onClick={send}>Отправить</button>
+    </div>
   );
 };
 
 ReactDOM.render(
-  <App const txt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, animi.' />,
-  document.getElementById('root')
+  <App />, document.getElementById('root')
 );
