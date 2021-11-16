@@ -17,3 +17,18 @@ code {
   font-size: 20px;
   font-style: italic;
 }
+
+.wrap {
+  padding: 10px;
+}
+
+.message {
+  color: gray;
+}
+
+.input {
+  border: 0;
+  border-bottom: 1px solid gray;
+  outline: none;
+  margin-right: 5px;
+}
